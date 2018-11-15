@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: microsoft/dotnet:sdk
+      - image: circleci/microsoft/dotnet:sdk
     steps:
       - checkout
       - run:
@@ -15,14 +15,14 @@ jobs:
           name: Run tests 
           command: dotnet test --no-build QuizRTapi.Tests
   deploy:  
-    docker:
-      - image: microsoft/dotnet:sdk
+    # docker:
+    #   - image: circleci/microsoft/dotnet:sdk
     # environment:
     #   AWS_DEFAULT_OUTPUT: json
     steps:
-      - checkout
+      # - checkout
       - run:
-          name: Koi Command Hai
+          name: Some Command
           command: ls -a
 workflows:
   version: 2
