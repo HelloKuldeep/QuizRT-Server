@@ -14,3 +14,24 @@ jobs:
       - run:
           name: Run tests 
           command: dotnet test --no-build QuizRTapi.Tests
+  deploy:  
+    docker:
+      - image: microsoft/dotnet:sdk
+    # environment:
+    #   AWS_DEFAULT_OUTPUT: json
+    steps:
+      - checkout
+      - run:
+          name: Koi Command Hai
+          command: ls -a
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
